@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         // calls the rollDice function, defined below
         rollButton.setOnClickListener { rollDice() }
 
+        // call rollDice() here so that the screen isn't blank when first opening the app
         rollDice()
 
     }
@@ -32,9 +33,11 @@ class MainActivity : AppCompatActivity() {
         val dice1 = Dice(6, findViewById(R.id.text_roll_result),findViewById(R.id.image_dice), 1)
         val dice2 = Dice(6, findViewById(R.id.text_roll_result2),findViewById(R.id.image_dice2), 2)
 
+        // here we roll the dice by calling the Dice object's method 'updateDice'
         dice1.updateDice()
         dice2.updateDice()
 
+        // create a toast if the dice's values are the same
         if (dice1.checkTheSame(dice2)) {
             Toast.makeText(this@MainActivity, "The Dice have the same value!", Toast.LENGTH_SHORT).show()
         }
@@ -52,6 +55,7 @@ class Dice(
     private var num: Int,
     ) {
 
+    // generates a random number between 1 and numsides
     private fun roll(): Int {
         return (1..numSides).random()
     }
@@ -64,9 +68,10 @@ class Dice(
         val diceRoll = this.roll()
         this.num = diceRoll
 
-
+        // updates the textView on screen
         this.resultTextView.text = diceRoll.toString()
 
+        // similar to scala pattern matching
         val drawableResource = when (diceRoll){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -77,6 +82,7 @@ class Dice(
             else -> R.drawable.dice_6
         }
 
+        // here we update the dice's image (corresponding to 1-6)...
         this.resultDiceImage.setImageResource(drawableResource)
     }
 
