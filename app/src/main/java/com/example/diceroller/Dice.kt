@@ -38,7 +38,7 @@ class Dice(
             else -> R.drawable.dice_6
         }
 
-        // here we update the dice's image (corresponding to 1-6)...
+        // here we update the dices image (corresponding to 1-6)...
         this.resultDiceImage.setImageResource(drawableResource)
     }
 

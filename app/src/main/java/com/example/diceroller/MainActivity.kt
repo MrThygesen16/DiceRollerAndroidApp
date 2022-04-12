@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         dice1.updateDice()
         dice2.updateDice()
 
-        // create a toast if the dice's values are the same
+        // create a toast if the dices values are the same
         if (dice1.checkTheSame(dice2)) {
             Toast.makeText(this@MainActivity, "The Dice have the same value!", Toast.LENGTH_SHORT).show()
         }
